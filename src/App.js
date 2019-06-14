@@ -10,7 +10,7 @@ function App({ values, errors, touched }) {
         <Field type="email" name="email" placeholder="Email" />
       </div>
       <div>
-      {touched.password && errors.password && <p>{errors.password}</p>}
+        {touched.password && errors.password && <p>{errors.password}</p>}
         <Field type="password" name="password" placeholder="Password" />
       </div>
       <label>
@@ -37,11 +37,11 @@ export default withFormik({
   },
   validationSchema: Yup.object().shape({
     email: Yup.string()
-      .email()
-      .required(),
+      .email("Email not valid")
+      .required("Email is required"),
     password: Yup.string()
-      .min(8)
-      .required()
+      .min(8, "Password must be at least 9 characters")
+      .required("Password is required")
   }),
   handleSubmit(values) {
     console.log(values);

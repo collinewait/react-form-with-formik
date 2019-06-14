@@ -2,9 +2,9 @@ import React from "react";
 import { withFormik } from "formik";
 import Yup from "yup";
 
-function App({ values, handleChange }) {
+function App({ values, handleChange, handleSubmit }) {
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <input
         type="email"
         name="email"
@@ -19,7 +19,8 @@ function App({ values, handleChange }) {
         value={values.password}
         onChange={handleChange}
       />
-    </div>
+      <button>Submit</button>
+    </form>
   );
 }
 
@@ -29,5 +30,8 @@ export default withFormik({
       email: email || "",
       password: password || ""
     };
+  },
+  handleSubmit(values) {
+    console.log(values);
   }
 })(App);

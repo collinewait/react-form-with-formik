@@ -43,7 +43,11 @@ export default withFormik({
       .min(8, "Password must be at least 9 characters")
       .required("Password is required")
   }),
-  handleSubmit(values) {
-    console.log(values);
+  handleSubmit(values, { setErrors }) {
+    setTimeout(() => {
+      if (values.email === "colline@wait.com") {
+        setErrors({email: "That email is already taken"})
+      }
+    }, 2000);
   }
 })(App);

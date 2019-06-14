@@ -12,14 +12,22 @@ function App({ values, handleChange }) {
         value={values.email}
         onChange={handleChange}
       />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={values.password}
+        onChange={handleChange}
+      />
     </div>
   );
 }
 
 export default withFormik({
-  mapPropsToValues({ email }) {
+  mapPropsToValues({ email, password }) {
     return {
-      email: email || ""
+      email: email || "",
+      password: password || ""
     };
   }
 })(App);

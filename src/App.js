@@ -1,24 +1,12 @@
 import React from "react";
-import { withFormik, Form } from "formik";
+import { withFormik, Form, Field } from "formik";
 import Yup from "yup";
 
-function App({ values, handleChange }) {
+function App() {
   return (
     <Form>
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={values.email}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={values.password}
-        onChange={handleChange}
-      />
+      <Field type="email" name="email" placeholder="Email" />
+      <Field type="password" name="password" placeholder="Password" />
       <button>Submit</button>
     </Form>
   );

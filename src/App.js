@@ -1,10 +1,10 @@
 import React from "react";
-import { withFormik } from "formik";
+import { withFormik, Form } from "formik";
 import Yup from "yup";
 
-function App({ values, handleChange, handleSubmit }) {
+function App({ values, handleChange }) {
   return (
-    <form onSubmit={handleSubmit}>
+    <Form>
       <input
         type="email"
         name="email"
@@ -20,7 +20,7 @@ function App({ values, handleChange, handleSubmit }) {
         onChange={handleChange}
       />
       <button>Submit</button>
-    </form>
+    </Form>
   );
 }
 

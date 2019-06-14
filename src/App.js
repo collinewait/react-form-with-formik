@@ -2,7 +2,7 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-function App({ values, errors, touched }) {
+function App({ values, errors, touched, isSubmitting }) {
   return (
     <Form>
       <div>
@@ -21,7 +21,7 @@ function App({ values, errors, touched }) {
         <option value="free">Free</option>
         <option value="premium">Premium</option>
       </Field>
-      <button>Submit</button>
+      <button disabled={isSubmitting}>Submit</button>
     </Form>
   );
 }
@@ -43,13 +43,14 @@ export default withFormik({
       .min(8, "Password must be at least 9 characters")
       .required("Password is required")
   }),
-  handleSubmit(values, { setErrors, resetForm }) {
+  handleSubmit(values, { setErrors, resetForm, setSubmitting }) {
     setTimeout(() => {
       if (values.email === "colline@wait.com") {
         setErrors({ email: "That email is already taken" });
       } else {
         resetForm();
       }
+      setSubmitting(false);
     }, 2000);
   }
 })(App);

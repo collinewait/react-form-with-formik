@@ -2,7 +2,7 @@ import React from "react";
 import { withFormik } from "formik";
 import Yup from "yup";
 
-function App({ values }) {
+function App({ values, handleChange }) {
   return (
     <div>
       <input
@@ -10,6 +10,7 @@ function App({ values }) {
         name="email"
         placeholder="Email"
         value={values.email}
+        onChange={handleChange}
       />
     </div>
   );

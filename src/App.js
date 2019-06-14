@@ -17,9 +17,9 @@ function App({ values, handleChange }) {
 }
 
 export default withFormik({
-  mapPropsToValues() {
+  mapPropsToValues({ email }) {
     return {
-      email: "test email"
+      email: email || ""
     };
   }
 })(App);
